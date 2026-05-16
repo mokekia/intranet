@@ -26,7 +26,6 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body
     const employee = await getEmployeeByEmail(email)
-    console.log('Employee', employee)
     if(!employee) return res.status(404).json({ message: 'Employee not found' })
     const match = await bcrypt.compare(password, employee.password)
     if(!match) return res.status(401).json( {message: 'Invalid password'} )

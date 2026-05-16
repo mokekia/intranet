@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom'
 function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('Employee')
   const [error, setError] = useState(null)
   const { login } = useAuth()
   const navigate  = useNavigate()
@@ -25,20 +24,13 @@ function LoginPage() {
       await login(email, password)
       navigate('/')        
     } catch (error) {
-      console.error(error)
+      setError('Invalid email or password')
     }
   }
 
   return (
     <div>
-      <div>
-        
-        <button onClick={() => setRole('Employee')}>Employee</button>
-        <button onClick={() => setRole('Manager')}>Manager</button>
-        <button onClick={() => setRole('Admin')}>Admin</button>
-
-      </div>
-      
+      <h1>IntraNet</h1>
       <div>
       
         <input 
@@ -57,7 +49,7 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           
         />
-
+        {error && <p style={{color: 'red'}}>{error}</p> }
         <button onClick={() => handleSubmit()}>Login</button>
       </div>
       
