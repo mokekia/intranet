@@ -5,3 +5,6 @@
 // POST   /api/meetings          → meetingController.createMeeting   (manager, admin)
 // PUT    /api/meetings/:id      → meetingController.updateMeeting   (manager, admin)
 // DELETE /api/meetings/:id      → meetingController.deleteMeeting   (manager, admin)
+
+
+
