@@ -4,11 +4,11 @@
 // Renders <Outlet /> below so child pages appear inside the layout
 
 import React from 'react';
+import { useAuth } from '../../context/AuthContext';
 import  {useState, useEffect} from 'react'
 import { Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import "./navbar.css";
 
-const user = {name: "Joseph Smith", role: "employee"};
 
 const baseLinks = [
     { label: "Home", path: "/"},
@@ -20,11 +20,13 @@ const baseLinks = [
 const adminLink = { label: "Admin", path: "/admin"};
 
 export default function Navbar() {
+
+    const { user, logout} = useAuth();
+
     const location = useLocation();
     const navigate = useNavigate();
 
-
-    const links = user.role === "admin" ? 
+    const links = user?.role === "admin" ? // Safe check, only access if user exits
     [...baseLinks, adminLink] : baseLinks;
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -42,6 +44,7 @@ export default function Navbar() {
 
     const handleLogout = () => {
         // Here is the logout logic presented
+        logout();
         navigate("/login");
     };
 
