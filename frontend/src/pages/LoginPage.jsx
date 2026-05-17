@@ -9,7 +9,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-
+import './LoginPage.css'
 
 
 function LoginPage() {
@@ -29,31 +29,39 @@ function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>IntraNet</h1>
-      <div>
-      
-        <input 
-        type="text"
-        placeholder="Email"
-        value={email}
-        required
-        onChange={(e) => setEmail(e.target.value)}
-      />
-        <input 
-          type="password"
-          placeholder="Password"
-          value={password}
+
+  <div className='loginPage'>    
+      <div className='formCard'>    
+        <h1>IntraNet</h1>
+        <div className='formGroup'>
+          <label>Email</label>
+          <input className='formField'
+          type="text"
+          placeholder="your@email.com"
+          value={email}
           required
-          minLength={8}
-          onChange={(e) => setPassword(e.target.value)}
-          
+          onChange={(e) => setEmail(e.target.value)}
         />
+        </div>
+        
+        <div className='formGroup'>
+          <label>Password</label>
+          <input className='formField'
+            type="password"
+            placeholder="Password"
+            value={password}
+            required
+            minLength={8}
+            onChange={(e) => setPassword(e.target.value)}
+            
+          />
+        </div>
+        
         {error && <p style={{color: 'red'}}>{error}</p> }
-        <button onClick={() => handleSubmit()}>Login</button>
+        <button className='btn' onClick={() => handleSubmit()}>Login to dashboard</button>
       </div>
-      
-    </div>
+  </div>
+    
   )
 } 
 export default LoginPage
