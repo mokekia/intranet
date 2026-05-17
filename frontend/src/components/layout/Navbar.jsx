@@ -6,6 +6,7 @@
 import React from 'react';
 import  {useState} from 'react'
 import { Link, Outlet, useLocation, useNavigate} from "react-router-dom";
+import "./navbar.css";
 
 // const user = ({ user, logout }) => {
 //     const location = useLocation();
@@ -49,7 +50,7 @@ export default function Navbar() {
         <nav className="navbar">
             <div className="navbar-logo">
                 <img
-                    src="/src/assets/hero.png"
+                    src="/src/assets/logo.png"
                     alt="Zorex logo"
                     className="navbar-logo-image"
                 />
