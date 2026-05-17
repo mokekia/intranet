@@ -37,5 +37,14 @@ const login = async (req, res) => {
     res.status(500).json({message: error.message})
   } 
 }
+const getMe = async (req, res) => {
+  try {
+    const { id } = req.user
+    const employee = await getEmployeeById(id)
+    res.status(200).json(employee)
+  } catch (error) {
+    res.status(500).json({message: error})
+  }
+}
 
-module.exports = { register, login }
+module.exports = { register, login, getMe }
