@@ -6,53 +6,98 @@
 // - Manager/Admin only: form to create a new meeting (title, description, start/end datetime, location, type, participant checkboxes), posts to POST /api/meetings
 // - Auto-refreshes every 30 seconds using setInterval inside useEffect (cleanup on unmount)
 
-import {Calendar, Clock, MapPin, Tag} from "lucide-react";
+ import  './MeetingsPage.css';
 
-
-function title(){
+function MeetingTitle(){
     return (
-        <h1 id="meetingTitle">MEETINGS</h1>,
-        <h2 id="nextMeetingTitle">NEXT MEETING</h2> 
-
+        <div>  
+            <h1 id="meetingTitle">MEETINGS</h1>
+            <h2 id="nextMeetingTitle">NEXT MEETING</h2>
+        </div>
     );  
 }
 
-function sprintPlanning(){
+function SprintPlanning(){
     return (
-        
-         <> 
-         <h1 id="sprintPlanningTitle">Sprint Planning</h1>
-
-        <p> <Calendar size={16} /> Date </p>
-        <p> <Clock size={16} /> time </p>
-        <p> <MapPin size={16} /> Location </p>
-        <p> <Tag size={16} /> Type </p>
-        </>
 
 
+        <div id="sprintPlanningCard">
+            <h1 id="sprintPlanning">Sprint Planning</h1>
+            <div className="sprintPlanningGrid">
+                <p> 📅 Date</p>
+                <p> 🕒 Time</p>
+                <p> 📍 Location</p>
+                <p> 🏷️ Type</p>
+            </div>
+            
+        </div>
     );
 }
 
 
 function UpcomingMeetings(){
     return (
+        <div>
+            <h1 id="upcomingMeetings">UPCOMING MEETINGS</h1>
 
-       <>
-        <h1 id="UpcomingMeetingsTitle">UPCOMING MEETINGS</h1>
+            <div className="upcomingMeetingsGrid">
+                
+                <section className = "upcomingMeetingCard">
+                    <div className="background">
+                        <h3>Sprint Planning</h3>
+                        <div className="meetingDetails">
+                            <p >📅</p>
+                            <p >🕒</p>
+                            <p >📍</p>
+                            <p>🏷️</p>
+                        </div>
 
-        <section id="upcomingMeetingsGrid">
-            <div className = "upcomingMeetingCard">
-                <h3>Sprint Planning</h3>
-                <p><Calendar size={16} /></p>
-                <p><Clock size={16} /></p>
-                <p><MapPin size={16} /></p>
-                <p><Tag size={16} /></p>
+                    </div>
+                    
+                </section>
+
+                <section className = "upcomingMeetingCard">
+                    <div className="background">
+                        <h3>Sprint Planning</h3>
+                        <div className="meetingDetails">
+                            <p >📅</p>
+                            <p >🕒</p>
+                            <p >📍</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section className = "upcomingMeetingCard">
+                    <div className="background">
+                        <h3>Sprint Planning</h3>
+                        <div className="meetingDetails">
+                            <p >📅</p>
+                            <p >🕒</p>
+                            <p >📍</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section className = "upcomingMeetingCard">
+                    <div className="background">
+                        <h3>Sprint Planning</h3>
+                        <div className="meetingDetails">
+                            <p >📅</p>
+                            <p >🕒</p>
+                            <p >📍</p>
+                            <p>🏷️</p>
+                        </div>
+
+                    </div>
+                    
+                </section>
+
+               
 
             </div>
-
-        </section>
-        
-        </>
+            
+                
+        </div>
     );
 }
 
@@ -60,26 +105,115 @@ function UpcomingMeetings(){
 
 function PreviousMeetings(){
     return (
-        <>
-        <h1 id="previousMeetingsTitle">PREVIOUS MEETINGS</h1>
+        <div>
+            <h1 id="previousMeetings">PREVIOUS MEETINGS</h1>
+            <div className="previousMeetingsGrid">
 
-        <section id="previousMeetingsGrid">
-            <div className = "previousMeetingCard">
-                <h3>Client Meeting</h3>
-                <p><Calendar size={16} /></p>
-                <p><Clock size={16} /></p>
-                <p><MapPin size={16} /></p>
-                <p><Tag size={16} /></p>    
+                <section className = "previousMeetingCard">
+                    <div className="backgroundPrevious">
+                        <h3>Client Meeting</h3>
+                        <div className="Details">
+                            <p >📅</p>
+                            <p>🕒</p>
+                            <p >📍</p>
+                            <p >🏷️</p>
+                        </div>
 
+                    </div>
+                    
+                </section>
+
+                <section className = "previousMeetingCard">
+                    <div className="backgroundPrevious">
+                        <h3>Client Meeting</h3>
+                        <div className="Details">
+                            <p >📅</p>
+                            <p>🕒</p>
+                            <p >📍</p>
+                            <p >🏷️</p>
+                        </div>
+
+                    </div>
+                    
+                </section>
+
+                <section className = "previousMeetingCard">
+                    <div className="backgroundPrevious">
+                        <h3>Client Meeting</h3>
+                        <div className="Details">
+                            <p >📅</p>
+                            <p>🕒</p>
+                            <p >📍</p>
+                            <p >🏷️</p>
+                        </div>
+
+                    </div>
+                    
+                </section>
+
+                <section className = "previousMeetingCard">
+                    <div className="backgroundPrevious">
+                        <h3>Client Meeting</h3>
+                        <div className="Details">
+                            <p >📅</p>
+                            <p>🕒</p>
+                            <p >📍</p>
+                            <p >🏷️</p>
+                        </div>
+
+                    </div>
+                    
+                </section>
+
+                <section className = "previousMeetingCard">
+                    <div className="backgroundPrevious">
+                        <h3>Client Meeting</h3>
+                        <div className="Details">
+                            <p >📅</p>
+                            <p>🕒</p>
+                            <p >📍</p>
+                            <p >🏷️</p>
+                        </div>
+
+                    </div>
+                    
+                </section>
+
+                <section className = "previousMeetingCard">
+                    <div className="backgroundPrevious">
+                        <h3>Client Meeting</h3>
+                        <div className="Details">
+                            <p >📅</p>
+                            <p>🕒</p>
+                            <p >📍</p>
+                            <p >🏷️</p>
+                        </div>
+
+                    </div>
+                    
+                </section>
             </div>
+        </div>
+    );     
+}
 
-        </section>
-        
-        </>
-        
-       
+function MeetingsPage(){
+    return (
+        <div style={{ color: "white", background: "#E4E9FF", padding: "40px" }}>
+            <MeetingTitle />
+            <SprintPlanning />
+            <UpcomingMeetings />
+            <PreviousMeetings />
+
+            
+
+
+        </div>
     );
 }
+
+console.log("MeetingsPage is rendering");
+
 
 export default MeetingsPage;
 
