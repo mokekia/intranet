@@ -6,7 +6,7 @@
 
 import "./HomePage.css";
 
-const user = { name: "Joseph smith", role: "employee"};
+const user = { name: "Joseph Smith", role: "employee"};
 
 const newsData = [
     {
@@ -24,14 +24,14 @@ const newsData = [
     },
     {
         id:3,
-        image:"https://unsplash.com/photos/a-large-office-space-J7YwSwnSckM", 
+        image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80", 
         title: "Office Renovation-Completed",
         body: "Our office renovation are finally completed!"
 
     },
     {
         id:4,
-        image: "https://unsplash.com/photos/ai-artificial-intelligence-concept3d-renderingconceptual-image-lZqmEhe2if4",
+        image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80",
         title: "AI Training Sessions",
         body: "Happy to announce that's we are offering our free AI Integration training sessions every monday and wednesday the next two months"
     },
@@ -43,7 +43,7 @@ const nextMeeting = [
         description: "Let's all discuss and plan for the next upcoming sprint. We will assing roles, go over backlog and potential shortcomings.",
         date: "2026-05-30",
         time: "10:30 AM",
-        Location: "Zoom (link in calendar invite",
+        location: "Zoom (link in calendar invite",
         type: "Team meeting"
 
     },
@@ -69,29 +69,27 @@ export default function HomePage() {
     return (
         <div className= "HomePage">
             <section className="hero">
-                <div className="hero-overlay">
-                <div className="heo-content">
+                <div className="hero-overlay"/>
+                <div className="hero-content">
                     <h1 className="hero-title"> 
-                        Welcome Back!<span className="hero-name">{user.name}</span></h1>
-                </div>
-                </div>
+                        Welcome Back, <span className="hero-name">{user.name}!</span></h1>                </div>
             </section>
             <div className="homepage-content">
                 <section className= "shortcuts">
                     <h2 className= "section-title">SHORTCUTS</h2>
                     <div className="shortcuts-grid">
-                        {shortcuts.map((s) => (
+                        {shortCuts.map((s) => (
                             <a key={s.path} href={s.path} className="shortcut-card">
                                 <span className="shortcut-icon">{s.icon}</span>
                                 <span className="shortcut-label">{s.label}</span>
                             </a>
-                        ))};
+                        ))}
                     </div>
                 </section>
 
                 <section className="news">
                     <h2 className="section-title">
-                        <span className="section-title-hightligt"> NEWS</span>
+                        <span className="section-title-highligt"> NEWS</span>
                     </h2>
                     <div className="news-grid">
                         {newsData.map((n) => (
@@ -102,19 +100,19 @@ export default function HomePage() {
                             </div>
                         ))}
                     </div>
-                    <div className="arrow">&#8964</div> {/* html code for a down arrow */}
+                    <div className="arrow">&#8964;</div> {/* html code for a down arrow */}
                 </section>
 
                 <section className="meetings">
-                    <h2 classname="section-title">
-                        <span className="section-title-hightlight">UPCOMING MEETINGS</span>
+                    <h2 className="section-title">
+                        <span className="section-title-highlight">UPCOMING MEETINGS</span>
                     </h2>
                     <div className="meeting-card">
                         <div className="meeting-card-header">
                             <div className="meeting-icon">📅</div>
                             <div>
-                                <h3 className="meeting-title">{nextMeeting.title}</h3>
-                                <p className="meeting-description">{nextMeeting.description}</p>
+                                <h3 className="meeting-title">{nextMeeting[0].title}</h3>
+                                <p className="meeting-description">{nextMeeting[0].description}</p>
                             </div>
                         </div> 
 
@@ -123,7 +121,7 @@ export default function HomePage() {
                                 <span className="meeting-detail-icon">⏰</span>
                                 <div>
                                     <p className="meeting-detail-label">Time</p>
-                                    <p className="meeting-detail-value">{nextMeeting.time}</p>
+                                    <p className="meeting-detail-value">{nextMeeting[0].time}</p>
                                 </div>
                             </div>
                         </div> 
@@ -133,7 +131,7 @@ export default function HomePage() {
                                 <span className="meeting-detail-icon">📍</span>
                                 <div>
                                     <p className="meeting-detail-label">Location</p>
-                                    <p className="meeting-detail-value">{nextMeeting.location}</p>
+                                    <p className="meeting-detail-value">{nextMeeting[0].location}</p>
                                 </div>
                             </div>
                         </div> 
@@ -143,7 +141,7 @@ export default function HomePage() {
                                 <span className="meeting-detail-icon">👥</span>
                                 <div>
                                     <p className="meeting-detail-label">Attendees</p>
-                                    <p className="meeting-detail-value">{nextMeeting.type}</p> {/* Type of meeting, 1:1, , Workshop,team meeting, cheif meenting, all hands, etc. */}
+                                    <p className="meeting-detail-value">{nextMeeting[0].type}</p> {/* Type of meeting, 1:1, , Workshop,team meeting, cheif meenting, all hands, etc. */}
                                 </div>
                             </div>
                         </div> 

@@ -4,21 +4,11 @@
 // Renders <Outlet /> below so child pages appear inside the layout
 
 import React from 'react';
-import  {useState} from 'react'
+import  {useState, useEffect} from 'react'
 import { Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import "./navbar.css";
 
-// const user = ({ user, logout }) => {
-//     const location = useLocation();
-//     const navigate = useNavigate();
-
-//     const handleLogout = () => {
-//         logout();
-//         navigate('/login');
-//     };
-// }
-
-const user = {name: "John Doe", role: "employee"};
+const user = {name: "Joseph Smith", role: "employee"};
 
 const baseLinks = [
     { label: "Home", path: "/"},
@@ -39,23 +29,33 @@ export default function Navbar() {
 
     const [menuOpen, setMenuOpen] = useState(false);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if ( window.innerWidth > 768) {
+                setMenuOpen(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const handleLogout = () => {
         // Here is the logout logic presented
-
         navigate("/login");
     };
 
     return (
-      <>
-        <nav className="navbar">
-            <div className="navbar-logo">
-                <img
-                    src="/src/assets/logo.png"
-                    alt="Zorex logo"
-                    className="navbar-logo-image"
-                />
-                <span className="navbar-logo-text">Zorex</span>
-            </div>
+        <div style={{ position: 'relative', width: '100%'}}>
+            <nav className="navbar">
+                <div className="navbar-logo">
+                    <img
+                        src="/src/assets/logo.png"
+                        alt="Zorex logo"
+                        className="navbar-logo-image"
+                    />
+                    <span className="navbar-logo-text">Zorex</span>
+                </div>
 
             <ul className="navbar-links">
                 {links.map((link) => (
@@ -101,6 +101,6 @@ export default function Navbar() {
         )}
         <Outlet />
 
-    </>
+    </div>
     );
 }
