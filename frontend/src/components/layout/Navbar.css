@@ -1,1 +1,196 @@
-// Styles for the Navbar — sticky, white background, navy brand, responsive hamburger on mobile
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 45px;
+  background-color: #0d0d0f;
+  border-bottom: 1px solid #2a2820;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo-image {
+  width: 35px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.navbar-logo-text {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #fdf9f9;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 27px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #fdf9f9;
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: #bc9103;
+}
+
+.navbar-link--active {
+  color: #bc9103;
+}
+
+.navbar-link--active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #bc9103;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-username {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+  color: #e8e0cc;
+}
+
+.navbar-logout {
+  background: transparent;
+  border: 2px solid #2a2820;
+  font-weight: 700;
+  color: #807768;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navbar-logout:hover {
+  background-color: #9e8610;
+  border-color: #c9a84c;
+  color: #fff;
+}
+
+/* ── HAMBURGER ── */
+.navbar-hamburger {
+  display: none;
+  background: none;
+  border: 1.5px solid #2a2820;
+  padding: 5px 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 9px;
+  color: #bd9937;
+  transition: all 0.2s ease;
+}
+
+.navbar-hamburger:hover {
+  background-color: #9e8610;
+  border-color: #c4a142;
+  color: #fff;
+}
+
+/* ── MOBILE MENU ── */
+/* No display property here — React controls visibility */
+.navbar-mobile-menu {
+  flex-direction: column;
+  background-color: #0d0d0f;
+  padding: 16px 20px 20px;
+  width: 100%;
+  gap: 10px;
+  left: 0;
+  right:0;
+  top: 60px;
+  position: relative;
+  z-index: 999;
+  border-bottom: 1px solid #2a2820;
+  display: flex; /* always flex when React renders it */
+}
+
+.navbar-mobile-username {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
+  color: #615a52;
+  padding: 8px 0;
+  margin-bottom: 9px;
+  border-bottom: 1px solid #2a2820;
+}
+
+.navbar-mobile-link {
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1rem;
+  color: #e8e0cc;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1815;
+  transition: color 0.2s;
+}
+
+.navbar-mobile-link:hover {
+  color: #c9a84c;
+}
+
+.navbar-mobile-logout {
+  background: none;
+  font-weight: bold;
+  color: #807768;
+  padding: 8px 12px;
+  border: 2px solid #b9970e;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 9px;
+  border-radius: 8px;
+}
+
+.navbar-mobile-logout:hover {
+  background-color: #9e8610;
+  border-color: #b6912c;
+  color: #fff;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-right {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: block;
+  }
+}

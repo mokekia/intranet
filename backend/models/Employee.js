@@ -13,7 +13,7 @@ async function getEmployeeByEmail(email) {
 }
 
 async function getEmployeeById(id) {
-  const result = await pool.query('SELECT * FROM employees WHERE id=$1', [id])
+  const result = await pool.query('SELECT id, name, email, hourly_rate, role FROM employees WHERE id=$1', [id])
   return result.rows[0]
 }
 
