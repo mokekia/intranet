@@ -1,1 +1,194 @@
-// Styles for PayslipPage — light-blue page background, dark navy cards, table with gold dividers
+.payslip-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e4e9ff;
+  min-height: 100vh;
+  padding: 60px;
+}
+
+.payslip-title {
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  color: #000a32;
+  margin-bottom: 20px;
+}
+
+.payslip-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payslip-subtitle {
+  width: 70%;
+  font-size: 48px;
+  font-weight: 600;
+  color: #000a32;
+}
+
+.batch-summary-card {
+  background-color: #000a32;
+  border-radius: 35px;
+  padding: 24px 40px 32px 20px;
+  margin-bottom: 50px;
+  color: white;
+  width: 75%;
+  margin: 30px auto 0 auto;
+}
+
+
+.history-card {
+  background-color: #000a32;
+  border-radius: 35px;
+  padding: 24px 60px 60px 60px;
+  margin-bottom: 50px;
+  color: white;
+  width: 75%;
+  margin: 40px auto 0 auto;
+}
+
+.batch-summary-card,
+.history-card {
+    transition: transform 0.2s ease;
+}
+
+.batch-summary-card:hover,
+.history-card:hover {
+    transform: translateY(-2px);
+}
+
+.batch-summary-card h3,
+.history-card h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.summary-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.summary-item p {
+  font-size: 16px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.summary-item h4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+.history-card h3 {
+  margin-bottom: 20px;
+}
+
+.history-table {
+  width: 90%;
+  margin-top: 6px;
+  margin-left: 80px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.history-table tbody tr {
+    position: relative;
+    transition: opacity 0.2s ease;
+    cursor: default;
+}
+
+.history-table tbody tr:hover {
+    opacity: 0.85;
+}
+
+.history-table tbody tr::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 92%;
+    bottom: 0;
+    height: 1px;
+    background-color: #ffae00;
+}
+
+.history-table th {
+    padding: 0px 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.history-table td {
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.history-table th:first-child,
+.history-table td:first-child {
+    text-align: left;
+    padding-left: 0px;
+}
+
+@media (max-width: 768px) {
+    .payslip-page {
+        padding: 30px 20px;
+    }
+
+    .batch-summary-card {
+        margin-bottom: 32px;
+    }
+
+    .batch-summary-card,
+    .history-card {
+        width: 100%;
+        padding: 24px;
+        border-radius: 28px;
+    }
+
+    .payslip-title {
+        font-size: 42px;
+    }
+
+    .payslip-subtitle {
+        font-size: 32px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .summary-grid {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 18px;
+    }
+
+    .summary-item {
+        min-width: 120px;
+    }
+
+    .history-table {
+        min-width: 500px;
+    }
+
+    .history-card h3 {
+        margin-bottom: 20px;
+    }
+
+    .history-table th,
+    .history-table td {
+        font-size: 15px;
+    }
+}
+
+
