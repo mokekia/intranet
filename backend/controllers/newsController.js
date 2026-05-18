@@ -1,18 +1,18 @@
-import News from "../models/News";
+const pool = require('../config/db.js');
 
-export const getNews = async (req,res) => {
+const getNews = async (req,res) => {
     try{
-        const news = await News.findAll ({
-            order: [['createdAt', 'DESC']],
-        });
-        res.status(200).json(news);
+        const result = await pool.query (
+            'SELECT * FROM news ORDER BY created_at DESC'
+        );
+        res.status(200).json(result.rows);
     } catch (error) {
         res.status(500).json({ message: 'Failed to fetch news'});
     }
 };
 
 
-export const createNews = async (req,res) => {
+const createNews = async (req,res) => {
     try{
         const { title, content, author, imageUrl, category} = req.body;
         if (!title || !content) {
@@ -20,15 +20,14 @@ export const createNews = async (req,res) => {
         }
 
         // News.create() inserts a new row into the news table
-        const newNews = await News.create({
-            title, 
-            content,
-            author,
-            imageUrl,
-            category,
-        });
+        const result = await pool.query ( //placeholders
+            `INSERT INTO news (title, content, author, image_url, category)
+            VALUES ($1, $2, $3, $4, $5) 
+            RETURNING *`,
+            [title, content, author || 'Admin', imageUrl || null, category || 'COMPANY']
+        );
 
-        res.status(200).json(newNews);
+        res.status(201).json(result.rows[0]);
 
     } catch (error) {
         res.status(500).json({ message: 'Failed to fetch news'});
@@ -36,19 +35,25 @@ export const createNews = async (req,res) => {
 };
 
 
-export const deleteNews = async (req,res) => {
+const deleteNews = async (req,res) => {
     try{
         const { id } = req.params; // Get value from the url itself
 
         // findByPk() finds a single row by its primary key (id)
-        const news = await News.findByPk(id);
+        const check = await pool.query(
+            'SELECT * FROM news WHERE id = $1',
+            [id]
+        );
 
-        if (!news) {
+        if (check.rows.length === 0) {
             return res.status(404).json({message: 'News not found'});
         }
 
         // destroy() deletes that specific row from the database
-        await news.destroy()
+        await pool.query(
+            'DELETE FROM news WHERE id = $1',
+            [id]
+        );
 
         res.status(200).json({ message: 'News deleted successfully!'});
 
@@ -57,3 +62,5 @@ export const deleteNews = async (req,res) => {
         res.status(500).json({ message: 'Failed to fetch news'});
     }
 }
+
+module.exports = { getNews, createNews, deleteNews};

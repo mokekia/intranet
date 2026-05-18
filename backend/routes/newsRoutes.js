@@ -3,12 +3,12 @@
 // POST   /api/news        → newsController.createNews    (manager, admin)
 // DELETE /api/news/:id    → newsController.deleteNews    (admin)
 
-import { Router } from 'express';
+const { Router } = require('express');
 
-import { getNews, createNews, deleteNews } from '../controllers/newsController.js';
-import { authMiddleware } from '../middleware/authMiddleware.js';
+const { getNews, createNews, deleteNews } = require('../controllers/newsController.js');
+const { authMiddleware } = require('../middleware/authMiddleware.js');
 
-import { roleMiddleware } from '../middleware/roleMiddleware.js';
+const { roleMiddleware } = require('../middleware/roleMiddleware.js');
 
 const router = Router();
 
@@ -16,4 +16,4 @@ router.get('/', authMiddleware, getNews);
 router.post("/", authMiddleware, roleMiddleware(['manager', 'admin']), createNews);
 router.delete("/:id", authMiddleware, roleMiddleware([ 'admin']), deleteNews);
 
-export default router;
+module.exports = router;
