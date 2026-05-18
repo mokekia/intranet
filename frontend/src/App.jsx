@@ -8,6 +8,7 @@ import MeetingsPage from './pages/MeetingsPage'
 import PayslipPage from './pages/PayslipPage'
 import TimeSheetPage from './pages/TimeSheetPage'
 import LoginPage from './pages/LoginPage'
+import Navbar from './components/layout/Navbar';
 function App() {
   return (
     <BrowserRouter>
@@ -16,12 +17,14 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
 
         <Route element={ <PrivateRoute /> }>
-          <Route path='/' element={ <HomePage /> } />
-          <Route path='/timesheet' element={ <TimeSheetPage /> } />
-          <Route path='/meetings' element={ <MeetingsPage /> } />
-          <Route path='/payslip' element={ <PayslipPage /> } />
-          <Route element={<RoleRoute allowedRoles={['Admin']}/>} >
-            <Route path='/admin' element={<AdminPage />} />
+          <Route element={<Navbar />}>
+            <Route path='/' element={ <HomePage /> } />
+            <Route path='/timesheet' element={ <TimeSheetPage /> } />
+            <Route path='/meetings' element={ <MeetingsPage /> } />
+            <Route path='/payslip' element={ <PayslipPage /> } />
+            <Route element={<RoleRoute allowedRoles={['Admin']}/>} >
+              <Route path='/admin' element={<AdminPage />} />
+            </Route>
           </Route>
         </Route>
 
