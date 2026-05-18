@@ -1,1 +1,425 @@
-// Styles for HomePage — hero banner with overlay, shortcut buttons (navy), news card grid, meeting card
+
+* {
+    box-sizing: border-box;
+}
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-username {
+    color: #e8e8e8;
+}
+
+.navbar-links {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar-hamburger {
+    display: none;
+    background: none;
+    border: 1px solid #4a4840;
+    border-radius: 9px;
+    color: #e8e0cc;
+    font-size: 20px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.navbar-hamburger:hover {
+    border-color: #c5a140;
+    color: #c9a84c;
+}
+
+.navbar-mobile-menu{
+    background-color: #0d0d0f;
+    border-bottom: 1px solid #1e1c18;
+    padding: 16px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    z-index: 99;
+}
+
+.navbar-mobile-username{
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: 1px solid #1e1c18;
+    font-size: 13px;
+    color: #6a6258;
+    padding: 8px 0 12px;
+    margin-bottom: 9px;
+}
+
+.navbar-mobile-logout {
+    background: none;
+    border: 1px solid #2a2820;
+    border-radius: 9px;
+    color: #e8e0cc;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.navbar-mobile-logout:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+   
+}
+
+.navbar-mobile-link{
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: 1px solid #1a1815;
+    font-size: 14px;
+    color: #e8e0cc;
+    padding: 10px 0;
+    transition: color 0.2s;
+}
+
+.navbar-mobile-link:hover{
+    color: #c9a84c;
+   
+}
+
+
+.homepage {
+    background-color: #f2f3f4;
+    min-height: 100vh;
+    font-family:'Times New Roman', Times, serif;
+    overflow: hidden;
+    width: 100%;
+}
+
+.homepage-content {
+    margin: 0 auto;
+    max-width: 1150px;
+    padding: 48px 24px 80px;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.navbar-logout:hover {
+    color: #c9a84c;
+    border-color: #c9a33b;
+}
+
+
+
+.hero {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80');
+    background-size: cover;
+    background-position: center 30%;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(10,15,60, 0.85) 0%, rgba(10, 15, 40, 0.60) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 100;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.hero-title {
+    font-size: 2rem;
+    font-weight: 720;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+.hero-name {
+    color: #cd9e05;
+    font-style: italic;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a2b6b;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+}
+
+.section-title-bar {
+    width: 3px;
+    display: inline-block;
+    height: 17px;
+    background: #d48607;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+
+.shortcuts {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    margin-bottom: 52px;
+    flex-direction: column;
+}
+
+.shortcuts .section-title {
+    justify-content: center;
+}
+
+.shortcuts-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.shortcut-card {
+    background-color: #1a2b6b;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 120px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.shortcut-card:hover {
+    transform: translateY(-4.5px);
+    box-shadow: 0 8px 24px rgba(26, 43, 107, 0.35);
+}
+
+.shortcut-icon {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.shortcut-label {
+    font-size: 0.8rem;
+    color: #ffffff;
+    font-weight: 650;
+    text-align: center;
+    letter-spacing: 0.02em; 
+}
+
+.news {
+    margin-bottom:50px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.news-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26, 43, 107, 0.35);
+}
+
+.news-image{
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image {
+    transform: scale(1.05);
+}
+
+.news-body {
+    padding: 15px;
+    line-height: 1.6;
+    font-size: 12px;
+    color: #525050;
+}
+
+.news-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a2b6b;
+    margin-bottom: 9px;
+    line-height: 1.4;
+}
+
+.news-arrow{
+    text-align:center;
+    font-size: 24px;
+    color: #c4c9d4;
+    margin-top: 9px;
+}
+
+.meetings {
+    margin-bottom: 50px;
+}
+
+.meeting-card {
+    background: #fff;
+    border-radius: 11px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-left: 4px solid #9c8805;
+}
+
+.meeting-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26, 43, 107, 0.35);
+}
+
+.meeting-card-header {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin-bottom: 23px;
+}
+
+.meeting-icon {
+    width: 48px;
+    height: 48px;
+    background: #eef0fb;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    color: #1a2b6b
+}
+
+.meeting-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.meeting-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #050b49;
+    margin-bottom: 6px;
+}
+
+.meeting-description {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.meeting-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    border-top: 1.5px solid #f0f2f8;
+    padding-top: 20px;
+}
+
+.meeting-detail-icon {
+    font-size: 15px;
+    margin-top: 2px;
+}
+
+.meeting-detail-label {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.meeting-detail-value {
+    font-size: 14px;
+    color: #1a1f36;
+    font-weight: 650;
+}
+
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .meeting-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-title {
+        font-size: 26px;
+        padding: 0 20px;
+    }
+
+    .homepage-content {
+        padding: 30px 16px 60px;
+    }
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .navbar-links{
+        display: none;
+    }
+
+    .navbar-right{
+        display: none;
+    }
+
+    .navbar-hamburger{
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meeting-details {
+        grid-template-columns: 1fr;
+    }
+
+    .shortcuts-grid {
+        gap: 12px;
+    }
+
+    .shortcut-card {
+        width: 100px;
+        height: 95px;
+    }
+}
