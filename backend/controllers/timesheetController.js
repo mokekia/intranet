@@ -39,4 +39,20 @@ async function updateShiftStatus(req, res) {
   res.json({ message: 'Shift status updated' })
 }
 
-module.exports = { createShift, getMyShifts, getPendingShifts, getAllShifts, updateShiftStatus }
+// Employee deletes their own shift — DELETE /api/timesheet/:id
+async function deleteShift(req, res) {
+  const shift_id = req.params.id
+  await Shift.deleteShift(shift_id)
+  res.json({ message: 'Shift deleted successfully' })
+}
+
+// Employee edits their own shift — PUT /api/timesheet/:id
+async function editShift(req, res) {
+  const shift_id = req.params.id
+  const { working_time, late_time, shift_type } = req.body
+  await Shift.updateShift(shift_id, working_time, late_time, shift_type)
+  res.json({ message: 'Shift updated successfully' })
+}
+
+
+module.exports = { createShift, getMyShifts, getPendingShifts, getAllShifts, updateShiftStatus, deleteShift, editShift }

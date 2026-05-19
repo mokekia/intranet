@@ -42,4 +42,21 @@ async function updateShiftStatus(shift_id, status) {
   )
 }
 
+// deletes a shift by id
+async function deleteShift(shift_id) {
+  await pool.query(
+    'DELETE FROM shifts WHERE id = $1',
+    [shift_id]
+  )
+}
+
+// updates a shift's hours and type — used when employee edits a logged shift
+async function updateShift(shift_id, working_time, late_time, shift_type) {
+  await pool.query(
+    'UPDATE shifts SET working_time = $1, late_time = $2, shift_type = $3 WHERE id = $4',
+    [working_time, late_time, shift_type, shift_id]
+  )
+}
+    
+
 module.exports = { createShift, getByEmployeeAndMonth, getPending, getAllShifts, updateShiftStatus }
