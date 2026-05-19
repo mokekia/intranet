@@ -3,6 +3,7 @@
     font-weight: bold;
     font-family: sans-serif;
     color: black;
+    text-align: center;
 }
 
 #nextMeetingTitle{
@@ -10,7 +11,14 @@
     font-weight: bold;
     font-family: sans-serif;
     color: black;
+    text-align: center;
 }
+
+
+/* .body {
+  display: flex;
+  justify-content: center;
+} */
 
 #sprintPlanningCard{
     background: #ffffff;
@@ -39,6 +47,7 @@
     font-size: 16px;
     font-family: sans-serif;
     color: black;
+    text-align: center;
 }
 
 
@@ -49,6 +58,7 @@
     font-weight: bold;
     font-family: sans-serif;
     color: black;
+    text-align: center;
 
 }
 
@@ -90,8 +100,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
-    max-width: 500px;
-    margin: 0 auto;
+    justify-content: center;
     padding: 14px;
     
 }
@@ -143,8 +152,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
-    max-width: 500px;
-    margin: 0 auto;
+    justify-content: center;
     padding: 14px;
     
 }
@@ -181,6 +189,8 @@
     padding: 3px;
     
 }
+
+
 
 
 

@@ -37,7 +37,7 @@ function SprintPlanning(){
 
 function UpcomingMeetings(){
     return (
-        <div>
+        <div className="body">
             <h1 id="upcomingMeetings">UPCOMING MEETINGS</h1>
 
             <div className="upcomingMeetingsGrid">
@@ -99,13 +99,15 @@ function UpcomingMeetings(){
                 
         </div>
     );
+
+    
 }
 
 
 
 function PreviousMeetings(){
     return (
-        <div>
+        <div className="body">
             <h1 id="previousMeetings">PREVIOUS MEETINGS</h1>
             <div className="previousMeetingsGrid">
 
@@ -212,7 +214,95 @@ function MeetingsPage(){
     );
 }
 
-console.log("MeetingsPage is rendering");
+
+
+const MeetingForm = ({ onSubmit, user }) => {
+
+  const [formData, setFormData] = useState({
+    time: "",
+    date: "",
+    location: "",
+    type: "",
+    userId: user?.id || ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onSubmit(formData);
+
+    setFormData({
+      time: "",
+      date: "",
+      location: "",
+      type: "",
+      userId: user?.id || ""
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+
+      <input
+        type="date"
+        name="date"
+        value={formData.date}
+        onChange={handleChange}
+      />
+
+      <input
+        type="time"
+        name="time"
+        value={formData.time}
+        onChange={handleChange}
+      />
+
+      <input
+        type="text"
+        name="location"
+        placeholder="Location"
+        value={formData.location}
+        onChange={handleChange}
+      />
+
+      <select
+        name="type"
+        value={formData.type}
+        onChange={handleChange}
+      >
+        <option value="">Select Type</option>
+        <option value="personal meeting">Personal Meeting</option>
+        <option value="group meeting">Group Meeting</option>
+      </select>
+
+      <button type="submit">
+        Create Meeting
+      </button>
+
+    </form>
+  );
+};
+
+
+
+
+ //return (
+//         <form onSumbit={onSumbit}>
+//             <input type="text" date= "date" location="location" time="time"/>
+//             <select name="type">
+//                 <option value="personal meeting">Personal Meeting</option>
+//                 <option value="group meeting">Group Meeting</option>
+//             </select>
+//         </form>
+//    );
+
 
 
 export default MeetingsPage;
